@@ -3,8 +3,8 @@ package com.qa.garagechallenge;
 public class Motorbike extends Vehicle {
 	private boolean seatStorage;
 
-	public Motorbike(int id, String make, String colour, boolean seatStorage) {
-		super(id, make, colour, 2);
+	public Motorbike(String make, String colour, boolean seatStorage) {
+		super(make, colour, 2);
 		this.seatStorage = seatStorage;
 	}
 

@@ -6,8 +6,7 @@ public class Vehicle {
 	private String colour;
 	private int wheels;
 
-	public Vehicle(int id, String make, String colour, int wheels) {
-		this.id = id;
+	public Vehicle(String make, String colour, int wheels) {
 		this.make = make;
 		this.colour = colour;
 		this.wheels = wheels;

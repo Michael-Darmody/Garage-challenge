@@ -5,35 +5,41 @@ import java.util.ArrayList;
 public class Garage {
 	private ArrayList<Vehicle> vehicleList;
 	private int totalCost;
+	private int vehicleCount;
 
 	public Garage() {
 		this.vehicleList = new ArrayList<>();
 		this.totalCost = 0;
+		this.vehicleCount = 1;
 	}
 
-	public void addVehicle(Vehicle vehicle) {
-		vehicleList.add(vehicle);
+	public boolean addVehicle(Vehicle vehicle) {
+		vehicle.setId(vehicleCount++);
 		System.out.println("You have added the " + vehicle.getMake() + " to the garage.");
+		return vehicleList.add(vehicle);
 	}
 
-	public void removeVehicle(String vehicleType) {
-		for (Vehicle vehicle : new ArrayList<>(this.vehicleList)) {
-			if (vehicle.getClass().getTypeName().contains(vehicleType)) {
-				this.vehicleList.remove(vehicle);
+	public boolean removeVehicle(String vehicleType) {
+		ArrayList<Vehicle> toRemove = new ArrayList<>();
+
+		for (Vehicle vehicle : this.vehicleList) {
+			if (vehicle.getClass().getSimpleName().equalsIgnoreCase(vehicleType)) {
+				toRemove.add(vehicle);
 			}
 		}
+
+		return this.vehicleList.removeAll(toRemove);
 	}
 
-	public void removeVehicle(int id) {
-		for (int i = 0; i < this.vehicleList.size(); i++) {
-			Vehicle currentVehicle = this.vehicleList.get(i);
-			if (currentVehicle.getId() == id) {
-				this.vehicleList.remove(i);
-				System.out.println("The " + currentVehicle.getMake() + " has been removed.");
-				break;
+	public boolean removeVehicle(int id) {
+		for (Vehicle vehicle : this.vehicleList) {
+			if (vehicle.getId() == id) {
+				System.out.println("The vehicle at position " + vehicle.getId() + " has been removed.");
+				return this.vehicleList.remove(vehicle);
 			}
-			System.out.println("Could not find the vehicle youre looking for.");
 		}
+		System.out.println("The vehicle at this id could not be found");
+		return false;
 	}
 
 	public void emptyGarage() {

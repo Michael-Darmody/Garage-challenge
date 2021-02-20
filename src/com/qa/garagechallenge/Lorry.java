@@ -4,8 +4,8 @@ public class Lorry extends Vehicle {
 	private String trailerSize;
 	private boolean bedroom;
 
-	public Lorry(int id, String make, String colour, int wheels, String trailerSize, boolean bedroom) {
-		super(id, make, colour, 4);
+	public Lorry(String make, String colour, String trailerSize, boolean bedroom) {
+		super(make, colour, 4);
 		this.trailerSize = trailerSize;
 		this.bedroom = bedroom;
 	}

@@ -4,8 +4,8 @@ public class Car extends Vehicle {
 	private int seatNum;
 	private boolean spoiler;
 
-	public Car(int id, String make, String colour, int seatNum, boolean spoiler) {
-		super(id, make, colour, 4);
+	public Car(String make, String colour, int seatNum, boolean spoiler) {
+		super(make, colour, 4);
 		this.seatNum = seatNum;
 		this.spoiler = spoiler;
 	}
